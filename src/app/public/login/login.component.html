@@ -1,0 +1,35 @@
+<mat-sidenav-container class="app-login-container">
+
+  <div class="app-login-col-container-l1">
+    <div class="app-login-l1-item-logo-container">
+      <mat-icon svgIcon="login_b" class="app-login-icon"></mat-icon>
+    </div>
+    <div class="app-login-l1-item-form-container">
+      <form [formGroup]="loginForm" class="app-login-form">
+
+        <mat-form-field appearance="outline" color="accent" class="app-login-form-field">
+          <mat-label>USERNAME</mat-label>
+          <input matInput placeholder="username" formControlName="username">
+          <mat-icon svgIcon="user" matSuffix></mat-icon>
+          <mat-error *ngIf="loginForm.controls['username'].invalid">Username is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent" class="app-login-form-field">
+          <mat-label>PASSWORD</mat-label>
+          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
+                 formControlName="password">
+          <mat-icon *ngIf="hide" svgIcon="view" (click)="hide = !hide; $event.stopPropagation();" matSuffix></mat-icon>
+          <mat-icon *ngIf="!hide" svgIcon="hide" (click)="hide = !hide; $event.stopPropagation();" matSuffix></mat-icon>
+          <mat-error *ngIf="loginForm.controls['password'].invalid">Password is required</mat-error>
+        </mat-form-field>
+
+      </form>
+      <button mat-button class="app-login-form-button" (click)="authenticate()" [disabled]="loginForm.invalid">
+        <div class="app-login-form-button-text">Login</div>
+      </button>
+    </div>
+  </div>
+
+</mat-sidenav-container>
+
+

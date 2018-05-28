@@ -1,0 +1,15 @@
+.app-base-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.app-base-toolbar {
+  height: 100px;
+  width: 100vw;
+}
+
+
+/*.app-base-content {*/
+  /*width: 100vw;*/
+  /*height: 100vh;*/
+/*}*/
