@@ -3,21 +3,27 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class MovieService {
 
-  private movies:any[] = [];
+  private movies:Movie[] = [{
+    title:"Prueba 1",
+    description:"Description ... prueba 1",
+    img:"assets/img/aquaman.png",
+    type:".mp4"
+  }];
 
-  constructor(private _movieService:MovieService) {
+  constructor() {
 
   }
 
   getMovies(){
-    //llamar movies
-    this.movies = [];
     return this.movies;
   }
 
-  getMoviesByFilter(name:string){
-    //buscar pelicula
-    this.movies = [];
-    return this.movies;
-  }
+
+}
+
+export interface Movie{
+  title:string;
+  description:string;
+  img:string;
+  type:string;
 }

@@ -14,30 +14,39 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink] = "['about']">About</a>
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated()">
         <a class="nav-link" [routerLink] = "['content']">Content</a>
       </li>
 
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" (keyup.enter)="buscarContenido(buscarTexto.value)" #buscarTexto>
-      <button (click)="buscarContenido(buscarTexto.value)" class="btn btn-outline-primary my-2 my-sm-0" type="button">Buscar</button>
-    </form>
 
+    <div class="col-md-7">
+    </div>
 
-    <button
-        class="btn btn-primary btn-margin"
-        *ngIf="!auth.isAuthenticated()"
-        (click)="auth.login()">
-          Log In
-      </button>
+    <div class="col-md-3">
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" (keyup.enter)="buscarContenido(buscarTexto.value)" #buscarTexto>
+        <button (click)="buscarContenido(buscarTexto.value)" class="btn btn-outline-primary my-2 my-sm-0" type="button">Buscar</button>
+      </form>
+    </div>
 
+    <div class="col-md-1">
       <button
-        class="btn btn-primary btn-margin"
-        *ngIf="auth.isAuthenticated()"
-        (click)="auth.logout()">
-          Log Out
-      </button>
+          class="btn btn-sm btn-margin"
+          *ngIf="!auth.isAuthenticated()"
+          (click)="auth.login()">
+            Log In
+        </button>
+
+        <button
+          class="btn btn-sm btn-margin"
+          *ngIf="auth.isAuthenticated()"
+          (click)="auth.logout()">
+            Log Out
+        </button>
+    </div>
+
+
 
   </div>
 </nav>
