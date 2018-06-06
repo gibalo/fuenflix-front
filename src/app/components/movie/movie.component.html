@@ -1,4 +1,4 @@
-<h1>Titulo<small>Fecha</small></h1>
+<h1>Detailed</h1>
 <hr>
 
 <div class="row">
@@ -8,10 +8,10 @@
       <br><br>
     </div>
     <div class="col-md-8">
-      <h4>Titulo</h4>
+      <h4>{{movie.title}}</h4>
       <hr>
-      <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
-    </div>
+      <h5>{{movie.description}}</h5>
+      </div>
 
   </div>
   <br><br>
@@ -26,5 +26,22 @@
     </div>
 
 
-
   </div>
+  <hr>
+  <div class="row player-container">
+    <vg-player class=" player">
+       <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
+           <source src="https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4">
+       </video>
+    </vg-player>
+    <!-- <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+
+    </div>
+    <div class="col-md-2">
+
+    </div> -->
+
+   </div>

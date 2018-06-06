@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-
+import { HttpModule } from '@angular/http';
 
 //Rutas
 import {APP_ROUTING} from './app.routes';
@@ -39,7 +39,8 @@ import { PlayerComponent } from './components/player/player.component';
     AboutComponent,
     ContentComponent,
     MovieComponent,
-    ProfileComponent
+    ProfileComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +48,8 @@ import { PlayerComponent } from './components/player/player.component';
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
-    VgBufferingModule
+    VgBufferingModule,
+    HttpModule
   ],
   providers: [AuthService,AuthGuardService,MovieService],
   bootstrap: [AppComponent]

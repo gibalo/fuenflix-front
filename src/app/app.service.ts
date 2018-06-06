@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CanLoad } from '@angular/router';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+//import { Observable } from 'rxjs/Observable';
 //import { User } from './public.module/login.component/interfaces/user.interface';
-import { Subject } from 'rxjs/Subject';
+//import { Subject } from 'rxjs/Subject';
 import { Router } from '@angular/router';
 
 const urlBase = 'http://localhost:28080/fuenflixAPI/';
@@ -12,10 +12,12 @@ const urlBase = 'http://localhost:28080/fuenflixAPI/';
 @Injectable()
 export class AppService implements CanLoad {
 
-  public options = {};
+
+/*  public options = {};
 
   public username = new Subject<string>();
   public photo = new Subject<string>();
+*/
 
   constructor (private http: HttpClient, private router: Router) { }
 
@@ -23,6 +25,7 @@ export class AppService implements CanLoad {
     return true;
   }
 
+/*
   setOptions () {
     this.options = {
       headers: new HttpHeaders().set('Authorization', localStorage.getItem('token') ? localStorage.getItem('token') : '' ),
@@ -36,8 +39,6 @@ export class AppService implements CanLoad {
     };
   }
 
-
-  /* LOGIN - LOGOUT */
   login (user: User) {
     return this.http.post(urlBase + 'login', user, { observe: 'response' });
   }
@@ -46,8 +47,6 @@ export class AppService implements CanLoad {
     this.setOptions();
     return this.http.get(urlBase + 'logout', this.options);
   }
-
-  /* GET - POST - PUT - DELETE */
 
   get (url: string): Observable<any> {
     this.setOptions();
@@ -69,8 +68,6 @@ export class AppService implements CanLoad {
     return this.http.delete<any>(urlBase + url, this.options);
   }
 
-
-  /* OTHER METHODS */
   setProfile (username: string, photo: string) {
     localStorage.setItem('username', username);
     this.username.next(username);
@@ -79,32 +76,6 @@ export class AppService implements CanLoad {
       localStorage.setItem('photo', photo);
     }
   }
-
-  // openSnackBar (message: string, action: string) {
-  //   this.snackBar.open(message, action, {
-  //     duration: 2000,
-  //   });
-  // }
-
-
-
-  // updatePhotoFromLocalStorage () {
-  //   this.photo.next(localStorage.getItem('photo'));
-  // }
-  //
-  // updateUsernameFromLocalStorage () {
-  //   this.username.next(localStorage.getItem('username'));
-  // }
-  //
-  // displayAlert (success: boolean, code: number, msg: string) {
-  //   success ? this.notificationsService.success('Success', msg ? msg : '')
-  //     : this.notificationsService.error('Error (' + code + ')',  msg ? msg : '');
-  //   if (code === 401) {
-  //     localStorage.clear();
-  //     setTimeout(() => this.router.navigate(['login']), 3000);
-  //   }
-  // }
-  //
 
   errorManager (error: HttpErrorResponse) {
     console.log('ERROR CODE: ' + error.status);
@@ -120,5 +91,6 @@ export class AppService implements CanLoad {
     localStorage.clear();
     this.router.navigate(['login']);
   }
+  */
 
 }

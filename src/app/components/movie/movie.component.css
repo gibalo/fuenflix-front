@@ -1,0 +1,9 @@
+.player {
+  background-color: transparent;
+  width: auto;
+}
+.player-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
