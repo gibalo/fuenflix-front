@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core' ;
 import { CanLoad } from '@angular/router';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-//import { User } from './public.module/login.component/interfaces/user.interface';
-//import { Subject } from 'rxjs/Subject';
 import { Router } from '@angular/router';
 
 const urlBase = 'http://localhost:28080/fuenflixApi/';
@@ -12,6 +10,9 @@ const urlBase = 'http://localhost:28080/fuenflixApi/';
 export class AppService implements CanLoad {
 
  public options = {};
+
+ // Utilizo para àsar elementos a los componentes hijos sin volver a hacer petición al servicio
+ private item: { [key: string ]: any; } = {};
 
   // public username = new Subject<string>();
   // public photo = new Subject<string>();
@@ -23,6 +24,13 @@ export class AppService implements CanLoad {
     return true;
   }
 
+  setItem(key: string, value: any) {
+    this.item[key] = value;
+  }
+
+  getItem(key: string): any {
+    return this.item[key];
+  }
 
   setOptions () {
     this.options = {

@@ -4,7 +4,7 @@ export interface Movie {
   description: String;
   imagePath: String;
   contentTypeName: String;
-  contentType: String;
+  contentType: number;
   price: number;
   path: String;
 }

@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { MovieService,Movie } from '../../services/movie.service';
+
 
 
 @Component({
@@ -10,7 +9,7 @@ import { MovieService,Movie } from '../../services/movie.service';
 })
 export class PlayerComponent {
 
-  @Input() movie:Movie;
+  // @Input() movie:Movie;
 
   constructor() {
 

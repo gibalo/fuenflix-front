@@ -9,21 +9,23 @@ import { Movie } from './movie.interface';
   styleUrls: [ './movie.component.css' ],
 })
 export class MovieComponent {
-
+  url = 'content';
   movie: Movie;
+  private service: AppService;
 
   constructor (private appService: AppService) {
-    this.loadData();
+    this.service = appService;
+    this.getDataFromService();
   }
 
 
-  loadData() {
+  getDataFromService() {
+    this.movie = this.service.getItem('movie');
   }
 
-  test () {
-    console.log('TEST');
-    this.appService.get('test').subscribe( contents => {
-      console.log('BECARIO');
+  loadData () {
+    this.service.get(this.url + '/' + this.movie.id).subscribe(content => {
+      this.movie = content;
     });
   }
 

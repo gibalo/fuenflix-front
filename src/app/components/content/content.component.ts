@@ -1,27 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { AppService } from '../../app.service';
-import { MovieComponent } from '../movie/movie.component';
+import { Movie } from '../movie/movie.interface';
 
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css']
+  styleUrls: [ './content.component.css' ]
 })
+
 export class ContentComponent implements OnInit {
-  movies: MovieComponent[] = [];
+  url = 'content';
+  movies: Movie[] = [];
+  private service: AppService
 
-  constructor(private appService: AppService, private activatedRoute: ActivatedRoute) {
+  constructor (private appService: AppService) {
+    this.service = appService;
     this.loadData();
-
   }
 
-  loadData() {
+  loadData () {
+    this.service.get(this.url).subscribe(contents => {
+      this.movies = contents;
+    });
+
+    // this.movies = [{
+    //   id: 1,
+    //   name: 'Prueba 1',
+    //   description: 'Description ... prueba 1',
+    //   imagePath: 'assets/img/aquaman.png',
+    //   contentTypeName: '.mp4',
+    //   contentType: 1,
+    //   price: 123,
+    //   path: ''
+    // }];
   }
 
-  ngOnInit() {
+  setItem(movie: Movie) {
+    this.service.setItem('movie', movie);
+  }
 
-    // this.movies = this._movieService.getMovies();
+  ngOnInit () {
 
   }
 

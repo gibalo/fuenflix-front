@@ -7,7 +7,7 @@
      <div class="card-body">
        <h4 class="card-title">{{movie.name}}</h4>
        <h5 class="card-text">{{movie.description}}</h5>
-       <button class="btn btn-outline-primary btn-block" [routerLink]="['movie',movie.id]">Ir</button>
+       <button class="btn btn-outline-primary btn-block" (click)="setItem(movie)" [routerLink]="['movie',movie.id]">Ir</button>
      </div>
    </div>
 </div>
