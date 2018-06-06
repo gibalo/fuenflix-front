@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService,Movie } from '../../services/movie.service';
+import { AppService } from '../../app.service';
+
 
 @Component({
   selector: 'app-movie',
@@ -9,15 +11,16 @@ import { MovieService,Movie } from '../../services/movie.service';
 })
 export class MovieComponent {
 
-  @Input() movie:Movie;
+  private movie:Movie;
 
-  constructor(private activatedRoute:ActivatedRoute) {
+  constructor(private appService:AppService,private activatedRoute:ActivatedRoute, private _movieService:MovieService) {
 
     this.activatedRoute.params.subscribe( params => {
-
+        this.movie = this._movieService.getMovie(params['id']);
     });
 
   }
+
 
 
 }
