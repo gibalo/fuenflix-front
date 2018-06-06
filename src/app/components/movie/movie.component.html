@@ -4,11 +4,11 @@
 <div class="row">
     <hr>
     <div class="col-md-4">
-      <img [src]="movie.img" class="img-fluid" alt="">
+      <img [src]="movie.imagePath" class="img-fluid" alt="">
       <br><br>
     </div>
     <div class="col-md-8">
-      <h4>{{movie.title}}</h4>
+      <h4>{{movie.name}}</h4>
       <hr>
       <h5>{{movie.description}}</h5>
       </div>
@@ -35,7 +35,7 @@
        </video>
     </vg-player>
 
-    <button></butt>
+    <button (click)="test()" >KK -BTN</button>
     <!-- <div class="col-md-2">
 
     </div>

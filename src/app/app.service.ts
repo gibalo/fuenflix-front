@@ -6,8 +6,7 @@ import { Observable } from 'rxjs/Observable';
 //import { Subject } from 'rxjs/Subject';
 import { Router } from '@angular/router';
 
-const urlBase = 'http://localhost:28080/fuenflixAPI/';
-// const urlBase = 'http://10.0.122.244:28080/bluuRates/';
+const urlBase = 'http://localhost:28080/fuenflixApi/';
 
 @Injectable()
 export class AppService implements CanLoad {

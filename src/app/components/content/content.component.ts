@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MovieService,Movie } from '../../services/movie.service';
+import { AppService } from '../../app.service';
+import { MovieComponent } from '../movie/movie.component';
 
 @Component({
   selector: 'app-content',
@@ -8,19 +9,19 @@ import { MovieService,Movie } from '../../services/movie.service';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
-  private movies:Movie[] = [];
+  movies: MovieComponent[] = [];
 
-  constructor(private activatedRoute:ActivatedRoute, private _movieService:MovieService) {
+  constructor(private appService: AppService, private activatedRoute: ActivatedRoute) {
+    this.loadData();
 
-    this.activatedRoute.params.subscribe( params => {
+  }
 
-    });
-
+  loadData() {
   }
 
   ngOnInit() {
 
-    this.movies = this._movieService.getMovies();
+    // this.movies = this._movieService.getMovies();
 
   }
 

@@ -3,9 +3,9 @@
 
 <div class="card-columns">
   <div class="card" *ngFor="let movie of movies; let i = index">
-     <img class="card-img-top" [src]="movie.img" alt="">
+     <img class="card-img-top" [src]="movie.imagePath" alt="">
      <div class="card-body">
-       <h4 class="card-title">{{movie.title}}</h4>
+       <h4 class="card-title">{{movie.name}}</h4>
        <h5 class="card-text">{{movie.description}}</h5>
        <button class="btn btn-outline-primary btn-block" [routerLink]="['movie',movie.id]">Ir</button>
      </div>

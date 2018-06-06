@@ -1,15 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
-//Rutas
+// Rutas
 import {APP_ROUTING} from './app.routes';
 
-//Servicios
-import {MovieService} from './services/movie.service';
+// Servicios
 import {AuthService} from './services/auth.service';
 import {AuthGuardService} from './services/auth-guard.service';
 
@@ -20,7 +17,7 @@ import {VgOverlayPlayModule} from 'videogular2/overlay-play';
 import {VgBufferingModule} from 'videogular2/buffering';
 
 
-//Componentes
+// Componentes
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
@@ -29,6 +26,7 @@ import { ContentComponent } from './components/content/content.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { ProfileComponent } from './components/shared/profile/profile.component';
 import { PlayerComponent } from './components/player/player.component';
+import { AppService } from './app.service';
 
 
 @NgModule({
@@ -44,14 +42,15 @@ import { PlayerComponent } from './components/player/player.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     APP_ROUTING,
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
-    HttpModule
+    HttpClientModule
   ],
-  providers: [AuthService,AuthGuardService,MovieService],
+  providers: [AuthService, AuthGuardService, AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,26 +1,31 @@
-import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { MovieService,Movie } from '../../services/movie.service';
+import { Component } from '@angular/core';
 import { AppService } from '../../app.service';
+import { Movie } from './movie.interface';
 
 
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.css'],
+  styleUrls: [ './movie.component.css' ],
 })
 export class MovieComponent {
 
-  private movie:Movie;
+  movie: Movie;
 
-  constructor(private appService:AppService,private activatedRoute:ActivatedRoute, private _movieService:MovieService) {
-
-    this.activatedRoute.params.subscribe( params => {
-        this.movie = this._movieService.getMovie(params['id']);
-    });
-
+  constructor (private appService: AppService) {
+    this.loadData();
   }
 
+
+  loadData() {
+  }
+
+  test () {
+    console.log('TEST');
+    this.appService.get('test').subscribe( contents => {
+      console.log('BECARIO');
+    });
+  }
 
 
 }
