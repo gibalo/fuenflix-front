@@ -11,7 +11,7 @@ import { Movie } from '../movie/movie.interface';
 export class ContentComponent implements OnInit {
   url = 'content';
   movies: Movie[] = [];
-  private service: AppService
+  private service: AppService;
 
   constructor (private appService: AppService) {
     this.service = appService;
