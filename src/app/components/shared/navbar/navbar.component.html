@@ -17,36 +17,34 @@
       <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated()">
         <a class="nav-link" [routerLink] = "['content']">Content</a>
       </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated()">
+        <a class="nav-link" [routerLink] = "['mylist']">My List</a>
+      </li>
 
     </ul>
 
-    <div class="col-md-7">
-    </div>
-
-    <div class="col-md-3">
+    <div class="">
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" (keyup.enter)="buscarContenido(buscarTexto.value)" #buscarTexto>
         <button (click)="buscarContenido(buscarTexto.value)" class="btn btn-outline-primary my-2 my-sm-0" type="button">Buscar</button>
       </form>
     </div>
 
-    <div class="col-md-1">
+    <div class="">
       <button
-          class="btn btn-sm btn-margin"
+          class="btn btn-outline-primary my-2 mx-sm-2"
           *ngIf="!auth.isAuthenticated()"
           (click)="auth.login()">
             Log In
         </button>
 
         <button
-          class="btn btn-sm btn-margin"
+          class="btn btn-outline-primary my-2 mx-sm-2"
           *ngIf="auth.isAuthenticated()"
           (click)="auth.logout()">
             Log Out
         </button>
     </div>
-
-
 
   </div>
 </nav>

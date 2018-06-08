@@ -27,6 +27,7 @@ import { MovieComponent } from './components/movie/movie.component';
 import { ProfileComponent } from './components/shared/profile/profile.component';
 import { PlayerComponent } from './components/player/player.component';
 import { AppService } from './app.service';
+import { MylistComponent } from './components/mylist/mylist.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { AppService } from './app.service';
     ContentComponent,
     MovieComponent,
     ProfileComponent,
-    PlayerComponent
+    PlayerComponent,
+    MylistComponent
   ],
   imports: [
     BrowserModule,

@@ -60,7 +60,7 @@ export class AppService implements CanLoad {
   }
 
   post (url: string, body: any): Observable<any> {
-    this.setOptionsEmptyResponse();
+    this.setOptions();
     return this.http.post(urlBase + url, body, this.options);
   }
 

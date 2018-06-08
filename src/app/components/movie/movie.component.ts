@@ -9,6 +9,8 @@ import { Movie } from './movie.interface';
   styleUrls: [ './movie.component.css' ],
 })
 export class MovieComponent {
+
+  private title:string;
   url = 'content';
   movie: Movie;
   private service: AppService;
@@ -28,6 +30,13 @@ export class MovieComponent {
       this.movie = content;
     });
   }
+
+  comprar(){
+    this.service.get(this.url + '/' + this.movie.id).subscribe(content => {
+      this.movie = content;
+    });
+  }
+
 
 
 }

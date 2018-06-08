@@ -9,6 +9,8 @@ import { Movie } from '../movie/movie.interface';
 })
 
 export class ContentComponent implements OnInit {
+
+  title:string[];
   url = 'content';
   movies: Movie[] = [];
   private service: AppService;
@@ -37,6 +39,16 @@ export class ContentComponent implements OnInit {
 
   setItem(movie: Movie) {
     this.service.setItem('movie', movie);
+  }
+
+  titleSplit(){
+
+    for(let num = 0; num < this.movies.length; num++){
+      let fullTitle:string[] = this.movies[num].name.split(":",2);
+      this.movies[num].name = fullTitle[0];
+      this.title[num] = fullTitle[1];
+    }
+
   }
 
   ngOnInit () {

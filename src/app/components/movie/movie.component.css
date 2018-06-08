@@ -7,3 +7,9 @@
   flex-flow: row;
   justify-content: center;
 }
+
+.player video {
+
+ width: 100%;
+ 
+}
