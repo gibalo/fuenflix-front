@@ -14,7 +14,7 @@ const APP_ROUTES: Routes = [
   { path: 'content', component: ContentComponent, canActivate:[AuthGuardService] },
   { path: 'mylist', component: MylistComponent, canActivate:[AuthGuardService] },
   { path: 'content/movie/:id', component: MovieComponent },
-  { path: 'player', component: PlayerComponent },
+  { path: 'player', component: PlayerComponent , canActivate:[AuthGuardService]},
   { path: 'profile', component: ProfileComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
