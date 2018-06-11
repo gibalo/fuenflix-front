@@ -29,6 +29,7 @@ import { PlayerComponent } from './components/player/player.component';
 import { AppService } from './app.service';
 import { MylistComponent } from './components/mylist/mylist.component';
 import { LoginComponent } from './components/shared/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -52,7 +53,9 @@ import { LoginComponent } from './components/shared/login/login.component';
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [AuthService, AuthGuardService, AppService],
   bootstrap: [AppComponent]

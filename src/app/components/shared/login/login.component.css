@@ -1,0 +1,24 @@
+.app-login-container {
+  height: 80vh;
+  width: 30vw;
+  padding-top: 200px;
+  padding-left: 220px;
+}
+
+.login-form-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  /*height: 80%;*/
+}
+
+.app-login-form {
+  height: 30%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+}
+
+.app-login-form-button {
+  margin-top: 20px;
+}

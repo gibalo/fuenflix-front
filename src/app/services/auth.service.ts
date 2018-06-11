@@ -1,65 +1,60 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
-import * as auth0 from 'auth0-js';
+import { AppService } from '../app.service';
 
-(window as any).global = window;
+// (window as any).global = window;
 
 @Injectable()
 export class AuthService {
 
-  auth0 = new auth0.WebAuth({
-    clientID: 'DYXzO6A4jg4dh521Wt6v2kUTDa3R1p05',
-    domain: 'fuenflix.eu.auth0.com',
-    responseType: 'token id_token',
-    audience: 'https://fuenflix.eu.auth0.com/userinfo',
-    redirectUri: 'http://localhost:4200/callback',
-    scope: 'openid profile'
-  });
+  userProfile: any;
+  appService: AppService;
 
-  public userProfile:any;
-
-  constructor(public router: Router) {}
-
-  public login(): void {
-    this.auth0.authorize();
+  constructor(public router: Router, appService: AppService) {
+    this.appService = appService;
   }
 
-  public handleAuthentication(): void {
-    this.auth0.parseHash((err, authResult) => {
-      if (authResult && authResult.accessToken && authResult.idToken) {
-        window.location.hash = '';
-        this.setSession(authResult);
-        this.router.navigate(['/home']);
-      } else if (err) {
-        this.router.navigate(['/home']);
-        console.log(err);
-      }
+  startApp () {
+    // TODO
+    this.isAuthenticated() ? this.router.navigate(['/home']) : this.router.navigate(['/login']);
+  }
+
+  public login(request: any): void {
+    this.appService.post('login', request).subscribe(resp => {
+      console.log('Auth!!1');
+      localStorage.setItem('access_token', 'TOKEN');
+      this.router.navigate(['/home']);
     });
+    localStorage.setItem('access_token', 'TOKEN');
+    this.router.navigate(['/home']);
+
+    // this.auth0.authorize();
+    // Llamar al servicio ligin de tu api
   }
 
-  private setSession(authResult): void {
-    // Set the time that the Access Token will expire at
-    const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', expiresAt);
-  }
+  // private setSession(authResult): void {
+  //   // Set the time that the Access Token will expire at
+  //   const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+  //   localStorage.setItem('access_token', authResult.accessToken);
+  //   localStorage.setItem('id_token', authResult.idToken);
+  //   localStorage.setItem('expires_at', expiresAt);
+  // }
 
   public logout(): void {
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('expires_at');
     // Go back to the home route
     this.router.navigate(['/']);
   }
 
   public isAuthenticated(): boolean {
+    /* TODO */
+    return localStorage.getItem('access_token') != null;
+
     // Check whether the current time is past the
     // Access Token's expiry time
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '{}');
-    return new Date().getTime() < expiresAt;
+    // const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '{}');
+    // return new Date().getTime() < expiresAt;
   }
 
   public getProfile(cb): void {
@@ -69,12 +64,12 @@ export class AuthService {
   }
 
   const self = this;
-  this.auth0.client.userInfo(accessToken, (err, profile) => {
-    if (profile) {
-      self.userProfile = profile;
-    }
-    cb(err, profile);
-  });
+  // this.auth0.client.userInfo(accessToken, (err, profile) => {
+  //   if (profile) {
+  //     self.userProfile = profile;
+  //   }
+  //   cb(err, profile);
+  // });
 }
 
 }

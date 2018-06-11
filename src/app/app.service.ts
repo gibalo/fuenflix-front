@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 
-const urlBase = 'http://localhost:28080/fuenflixApi/';
+export const urlBase = 'http://localhost:28080/fuenflixApi/';
 
 @Injectable()
 export class AppService implements CanLoad {
