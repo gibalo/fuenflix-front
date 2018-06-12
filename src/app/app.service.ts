@@ -65,12 +65,15 @@ export class AppService implements CanLoad {
   }
 
   put (url: string, body: any): Observable<any> {
-    this.setOptionsEmptyResponse();
+    console.log('3');
+    this.setOptions();
+    console.log('3');
+
     return this.http.put<any>(urlBase + url, body, this.options);
   }
 
   delete (url: string): Observable<any> {
-    this.setOptionsEmptyResponse();
+    this.setOptions();
     return this.http.delete<any>(urlBase + url, this.options);
   }
 

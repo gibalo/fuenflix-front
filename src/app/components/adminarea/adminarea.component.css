@@ -3,6 +3,12 @@
   width: 100%;
 }
 
+.button-group{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
 .card-img{
   height: 255px;
 }

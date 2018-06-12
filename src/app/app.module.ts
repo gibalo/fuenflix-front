@@ -30,6 +30,7 @@ import { AppService } from './app.service';
 import { MylistComponent } from './components/mylist/mylist.component';
 import { LoginComponent } from './components/shared/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminareaComponent } from './components/adminarea/adminarea.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProfileComponent,
     PlayerComponent,
     MylistComponent,
-    LoginComponent
+    LoginComponent,
+    AdminareaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-md-8 animated fadeIn fast">
+    <br>
+    <h3>Contenido</h3>
+    <hr>
+    <div class="card-columns">
+      <div class="card mx-2" *ngFor="let movie of movies; let i = index">
+          <div class="card-img">
+            <img class="image-container" [src]="movie.imagePath" alt="">
+          </div>
+         <div class="card-body-custom">
+           <h5 class="card-title">{{movie.name}}</h5>
+         </div>
+         <div class="custom-feet">
+           <button class="btn btn-outline-primary btn-block" (click)="setEditForm(movie); edit = true">Editar</button>
+         </div>
+       </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <br>
+    <h3>Añadir</h3>
+    <hr>
+    <form [formGroup]="addForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" formControlName="name" name="name">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" aria-label="With textarea" formControlName="description" name="description"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="imagePath">Image </label>
+        <input type="text" class="form-control" formControlName="imagePath" name="imagePath">
+      </div>
+      <div class="form-group">
+        <label for="path">Path</label>
+        <input type="text" class="form-control" formControlName="path" name="path">
+      </div>
+      <div class="button-group">
+        <div>
+        <button *ngIf="!edit" type="submit" (click)="sendData()" [disabled]="addForm.invalid" class="btn btn-outline-primary animated fadeIn fast">Añadir</button>
+        <button *ngIf="edit" type="submit" (click)="editData()" [disabled]="addForm.invalid" class="btn btn-outline-primary animated fadeIn fast">Editar</button>
+        <button *ngIf="edit" type="submit" (click)="deleteData()" [disabled]="addForm.invalid" class="btn btn-outline-primary animated fadeIn fast">Eliminar</button>
+      </div>
+      <div>
+        <button *ngIf="edit" class="btn btn-outline-primary animated fadeIn fast" (click)="edit = !edit;setAddForm()">
+          <div><i class="fas fa-angle-double-left"></i></div>
+        </button>
+      </div>
+      </div>
+    </form>
+
+  </div>
+</div>

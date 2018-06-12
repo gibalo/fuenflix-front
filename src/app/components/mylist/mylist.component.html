@@ -1,7 +1,8 @@
-<h1> Mi lista</h1>
+<br>
+<h3 class="animated fadeIn fast"> Mi lista</h3>
 <hr>
 
-<div class="card-group">
+<div class="card-columns">
   <div class="card mx-2" *ngFor="let movie of movies; let i = index">
       <div class="card-img">
         <img class="image-container" [src]="movie.imagePath" alt="">

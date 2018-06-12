@@ -26,11 +26,6 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       username: [null, [Validators.required]],
       password: [null, [Validators.required]]
-      /*
-      comentado por YO&FM para no necesitar poner user y password
-      username: [null, [Validators.required]],
-      password: [null, [Validators.required]]
-      */
     });
   }
 

@@ -8,7 +8,12 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  profile: any;
+  profile: any = {
+    name : "Guillermo",
+    username : "gibalo",
+    address : "Dirección",
+    email : "gibarra@voiping.es"
+  };
 
   constructor(public auth: AuthService) { }
 
