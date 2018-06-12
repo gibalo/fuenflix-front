@@ -1,18 +1,58 @@
 <div class="app-login-container">
-<div class="login-form-container">
-
-
+<div *ngIf="login = true" class="login-form-container">
   <form [formGroup]="loginForm" class="app-login-form" >
     <div class="form-group" >
-      <label>Username</label>
-      <input type="text" class="form-control"  placeholder="Username" formControlName="username">
+      <label>Usuario</label>
+      <input type="text" class="form-control"  placeholder="Usuario" formControlName="username">
     </div>
     <div class="form-group">
-      <label>Password</label>
-      <input type="password" class="form-control"  placeholder="Password" formControlName="password">
+      <label>Contraseña</label>
+      <input type="password" class="form-control"  placeholder="Contraseña" formControlName="password">
     </div>
 
-    <button type="submit" class="btn btn-primary" (click)="authenticate()" [disabled]="loginForm.invalid">Submit</button>
+    <button type="submit" class="btn btn-primary" (click)="authenticate()" [disabled]="loginForm.invalid">Entrar</button>
+    <br>
+    <button type="submit" class="btn btn-primary" (click)="login = false">Registrar</button>
   </form>
-</div>
-</div>
+
+  <div class="panel panel-default profile-area">
+    <br>
+    <div class="panel-heading">
+      <h3 class="animated fadeIn fast">Profile</h3>
+      <hr>
+    </div>
+    <br>
+
+    <div class="row" *ngIf="profile">
+      <div class="col-md-4">
+        <form>
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" class="form-control" id="name">
+          </div>
+          <div class="form-group">
+            <label for="user">Usuario</label>
+            <input type="text" class="form-control" id="user">
+          </div>
+          <div class="form-group">
+            <label for="user">Contraseña</label>
+            <input type="password" class="form-control" id="user">
+          </div>
+      </div>
+
+      <div class="col-md-4">
+          <div class="form-group">
+            <label for="address">Dirección</label>
+            <input type="text" class="form-control" id="address" autocomplete='email'>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+          <div class="button">
+            <button type="submit" class="btn btn-outline-primary">Edit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

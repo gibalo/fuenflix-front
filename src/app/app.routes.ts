@@ -20,7 +20,7 @@ const APP_ROUTES: Routes = [
   { path: 'player', component: PlayerComponent , canActivate: [AuthGuardService]},
   { path: 'profile', component: ProfileComponent },
   { path: 'admin', component: AdminareaComponent , canActivate: [AuthGuardService]},
-  { path: '**', pathMatch: 'full', redirectTo: 'home' }
+  { path: '**', pathMatch: 'full', redirectTo: 'login' }
 ];
 
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);

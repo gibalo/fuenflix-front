@@ -1,8 +1,10 @@
 <div class="row">
   <div class="col-md-8 animated fadeIn fast">
     <br>
-    <h3>Contenido</h3>
-    <hr>
+    <div class="panel-heading">
+      <h3 class="animated fadeIn fast">Contenido</h3>
+      <hr>
+    </div>
     <div class="card-columns">
       <div class="card mx-2" *ngFor="let movie of movies; let i = index">
           <div class="card-img">
@@ -19,8 +21,10 @@
   </div>
   <div class="col-md-4">
     <br>
-    <h3>Añadir</h3>
-    <hr>
+    <div class="panel-heading">
+      <h3 class="animated fadeIn fast">Administrar</h3>
+      <hr>
+    </div>
     <form [formGroup]="addForm">
       <div class="form-group">
         <label for="name">Name</label>
