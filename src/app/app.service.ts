@@ -65,10 +65,7 @@ export class AppService implements CanLoad {
   }
 
   put (url: string, body: any): Observable<any> {
-    console.log('3');
     this.setOptions();
-    console.log('3');
-
     return this.http.put<any>(urlBase + url, body, this.options);
   }
 

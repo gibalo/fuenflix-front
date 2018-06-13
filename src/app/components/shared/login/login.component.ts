@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { AppService } from '../../../app.service';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +11,36 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
+  userExist:boolean;
+  login:boolean;
   loginForm: FormGroup;
+  registerForm: FormGroup;
   private service: AuthService;
 
-  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private appService: AppService,private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
     this.setLoginForm ();
     this.service = authService;
+    this.login = true;
+    this.userExist = false;
   }
 
   ngOnInit() {
+  }
+
+  register(){
+    this.appService.put('user',this.registerForm.value).subscribe(resp =>{}, error => {
+      this.userExist = true;
+    });
+  }
+
+  setRegisterForm(){
+    this.registerForm = this.formBuilder.group({
+      name: [null, [Validators.required]],
+      username: [null, [Validators.required]],
+      password: [null, [Validators.required]],
+      address: [null, [Validators.required]],
+      email: [null, [Validators.required]],
+    });
   }
 
   setLoginForm () {
@@ -30,7 +51,6 @@ export class LoginComponent implements OnInit {
   }
 
   authenticate() {
-    console.log(this.loginForm.value);
     this.service.login(this.loginForm.value);
   }
 

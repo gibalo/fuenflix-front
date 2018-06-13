@@ -21,15 +21,12 @@ export class AuthService {
 
   public login(request: any): void {
     this.appService.post('login', request).subscribe(resp => {
-      console.log('Auth!!1');
       localStorage.setItem('access_token', 'TOKEN');
+      localStorage.setItem('ff-username', resp.username);
+      localStorage.setItem('lvlff', resp.level);
       this.router.navigate(['/home']);
     });
-    localStorage.setItem('access_token', 'TOKEN');
     this.router.navigate(['/home']);
-
-    // this.auth0.authorize();
-    // Llamar al servicio ligin de tu api
   }
 
   // private setSession(authResult): void {
@@ -43,6 +40,8 @@ export class AuthService {
   public logout(): void {
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
+    localStorage.removeItem('ff-username');
+    localStorage.removeItem('lvlff');
     // Go back to the home route
     this.router.navigate(['/']);
   }

@@ -10,6 +10,7 @@ import { Movie } from './movie.interface';
 })
 export class MovieComponent {
 
+  private notOwned:boolean;
   private title:string;
   url = 'content';
   movie: Movie;
@@ -18,6 +19,7 @@ export class MovieComponent {
   constructor (private appService: AppService) {
     this.service = appService;
     this.getDataFromService();
+    this.notOwned = true;
   }
 
 
@@ -26,15 +28,25 @@ export class MovieComponent {
   }
 
   loadData () {
+
     this.service.get(this.url + '/' + this.movie.id).subscribe(content => {
       this.movie = content;
+    });
+
+    this.service.post(this.url,{contentType:1,user:localStorage.getItem('ff-username')}).subscribe(contents => {
+      contents.forEach( content => {
+        if(content.name == this.movie.name){
+          this.notOwned = false;
+        }
+      });
     });
   }
 
   comprar(){
-    this.service.get(this.url + '/' + this.movie.id).subscribe(content => {
+    this.service.post('buy',{content: this.movie.id, user: localStorage.getItem("ff-username")}).subscribe(content => {
       this.movie = content;
     });
+
   }
 
 

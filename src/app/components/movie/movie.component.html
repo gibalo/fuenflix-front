@@ -17,8 +17,8 @@
   <br><br>
   <div class="row">
 
-    <div class="col-md-4">
-      <a href="" class="btn btn-outline-danger btn-block">Añadir a mi Lista</a>
+    <div class="col-md-4" *ngIf="notOwned">
+      <a href="" class="btn btn-outline-danger btn-block" (click)="comprar()">Añadir a mi Lista</a>
     </div>
 
     <div class="col-md-4">
@@ -34,15 +34,4 @@
            <source [src]="movie.path" type="video/mp4">
        </video>
     </vg-player>
-
-    <!-- <div class="col-md-2">
-
-    </div>
-    <div class="col-md-8">
-
-    </div>
-    <div class="col-md-2">
-
-    </div> -->
-
    </div>

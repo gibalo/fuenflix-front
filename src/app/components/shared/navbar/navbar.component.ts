@@ -7,16 +7,19 @@ import {AuthService} from '../../../services/auth.service';
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent implements OnInit {
-  auth: AuthService;
 
+  auth: AuthService;
+  isAdmin:boolean;
   constructor(private authService: AuthService) {
     this.auth = authService;
   }
 
   ngOnInit() {
+    if(localStorage.getItem("lvlff") == "2"){
+      this.isAdmin = true;
+    }else{
+      this.isAdmin = false;
+    }
   }
 
-  buscarContenido(item: string) {
-
-  }
 }

@@ -20,7 +20,7 @@ export class MylistComponent implements OnInit {
     }
 
     loadData () {
-      this.service.post(this.url,{contentType:1,user:1}).subscribe(contents => {
+      this.service.post(this.url,{contentType:1,user:localStorage.getItem('ff-username')}).subscribe(contents => {
         this.movies = contents;
       });
     }

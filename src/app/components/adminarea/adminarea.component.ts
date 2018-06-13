@@ -29,16 +29,21 @@ export class AdminareaComponent {
 
   editData(){
     this.appService.post('content/'+this.editMovie.id,this.addForm.value).subscribe();
+    this.setAddForm();
+    this.loadData();
   }
 
   deleteData(){
-
     let id:number = this.editMovie.id;
     this.appService.delete('content/'+id).subscribe();
+    this.setAddForm();
+    this.loadData();
   }
 
   sendData() {
     this.appService.put('content',this.addForm.value).subscribe();
+    this.setAddForm();
+    this.loadData();
   }
 
   reload(){

@@ -22,7 +22,7 @@
       <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated()">
         <a class="nav-link" [routerLink] = "['profile']">Profile</a>
       </li>
-      <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated()">
+      <li class="nav-item" routerLinkActive="active" *ngIf="isAdmin && auth.isAuthenticated()">
         <a class="nav-link" [routerLink] = "['admin']">Admin</a>
       </li>
 
@@ -39,14 +39,14 @@
       <button
           class="btn btn-outline-primary my-2 mx-sm-2"
           *ngIf="!auth.isAuthenticated()"
-          (click)="auth.login()">
+          [routerLink] = "['login']">
             Log In
         </button>
 
         <button
           class="btn btn-outline-primary my-2 mx-sm-2"
           *ngIf="auth.isAuthenticated()"
-          (click)="auth.logout()">
+          (click)="auth.logout();isAdmin=false">
             Log Out
         </button>
     </div>
