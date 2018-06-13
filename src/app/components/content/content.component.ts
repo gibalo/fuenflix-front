@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../app.service';
 import { Movie } from '../movie/movie.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-content',
@@ -8,13 +9,13 @@ import { Movie } from '../movie/movie.interface';
   styleUrls: [ './content.component.css' ]
 })
 
-export class ContentComponent implements OnInit {
+export class ContentComponent {
 
   url = 'content';
   movies: Movie[] = [];
   private service: AppService;
 
-  constructor (private appService: AppService) {
+  constructor (private appService: AppService, private router: Router) {
     this.service = appService;
     this.loadData();
   }
@@ -27,9 +28,6 @@ export class ContentComponent implements OnInit {
 
   setItem(movie: Movie) {
     this.service.setItem('movie', movie);
-  }
-  ngOnInit () {
-
   }
 
 }

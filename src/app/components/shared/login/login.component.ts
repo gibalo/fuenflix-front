@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { NavbarComponent } from '../navbar/navbar.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppService } from '../../../app.service';
 
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   registerForm: FormGroup;
   private service: AuthService;
 
-  constructor(private appService: AppService,private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private navBar: NavbarComponent,private appService: AppService,private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
     this.setLoginForm ();
     this.service = authService;
     this.login = true;
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   register(){

@@ -25,8 +25,9 @@ export class AuthService {
       localStorage.setItem('ff-username', resp.username);
       localStorage.setItem('lvlff', resp.level);
       this.router.navigate(['/home']);
+      this.router.navigate(['/home']);
     });
-    this.router.navigate(['/home']);
+
   }
 
   // private setSession(authResult): void {

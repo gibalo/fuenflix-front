@@ -1,15 +1,18 @@
-<br>
-<h3 class="animated fadeIn fast"> Mi lista</h3>
-<hr>
-
-<div class="card-columns">
-  <div class="card mx-2" *ngFor="let movie of movies; let i = index">
-      <div class="card-img">
-        <img class="image-container" [src]="movie.imagePath" alt="">
-      </div>
-     <div class="card-body">
-       <h5 class="card-title">{{movie.name}}</h5>
-       <button class="btn btn-outline-primary btn-block" (click)="setItem(movie)" [routerLink]="['movie',movie.name]">Ir</button>
+<div class="col-md-10 animated fadeIn fast">
+  <br>
+  <h3>Mi Lista</h3>
+  <hr>
+  <div class="card-columns">
+    <div class="card mx-2" *ngFor="let movie of movies; let i = index">
+        <div class="card-img">
+          <img class="image-container" [src]="movie.imagePath" alt="">
+        </div>
+       <div class="card-body-custom">
+         <h5 class="card-title">{{movie.name}}</h5>
+       </div>
+       <div class="custom-feet">
+         <button class="btn btn-outline-primary btn-block" (click)="setItem(movie)" [routerLink]="['movie',movie.name]">Ir</button>
      </div>
-   </div>
+     </div>
+  </div>
 </div>

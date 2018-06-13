@@ -1,47 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../app.service';
 import { Movie } from '../movie/movie.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mylist',
   templateUrl: './mylist.component.html',
   styleUrls: ['./mylist.component.css']
 })
-export class MylistComponent implements OnInit {
+export class MylistComponent {
 
-    title:string[];
     url = 'content/filter';
     movies: Movie[] = [];
-    private service: AppService;
 
-    constructor (private appService: AppService) {
-      this.service = appService;
+    constructor (private appService: AppService, private router: Router) {
       this.loadData();
     }
 
     loadData () {
-      this.service.post(this.url,{contentType:1,user:localStorage.getItem('ff-username')}).subscribe(contents => {
+      this.appService.post(this.url,{contentType:1,user:localStorage.getItem('ff-username')}).subscribe(contents => {
         this.movies = contents;
       });
     }
 
     setItem(movie: Movie) {
-      this.service.setItem('movie', movie);
+      this.appService.setItem('movie', movie);
     }
-
-    titleSplit(){
-
-      for(let num = 0; num < this.movies.length; num++){
-        let fullTitle:string[] = this.movies[num].name.split(":",2);
-        this.movies[num].name = fullTitle[0];
-        this.title[num] = fullTitle[1];
-      }
-
-    }
-
-    ngOnInit () {
-
-    }
-
 
 }
